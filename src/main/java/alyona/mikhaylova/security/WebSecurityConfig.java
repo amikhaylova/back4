@@ -8,6 +8,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -15,6 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
+
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
@@ -24,10 +26,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private SecurityService securityService;
 
-    //TODO
     @Bean
     public PasswordEncoder passwordEncoder() {
-        //return NoOpPasswordEncoder.getInstance();
         return new BCryptPasswordEncoder();
     }
 
@@ -37,8 +37,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return super.authenticationManagerBean();
     }
 
-
-    //TODO
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf().disable()

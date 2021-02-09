@@ -21,7 +21,6 @@ public class PointController {
     @CrossOrigin
     @PostMapping(path = "/addPoint")
     public PointObject addPoint(@Validated @RequestBody PointObject point, @RequestHeader(value = "Authorization") String header) {
-        System.out.println("Запрос на добавление точечки!");
         return pointService.addPoint(point, header);
     }
 
@@ -29,7 +28,6 @@ public class PointController {
     @CrossOrigin
     @PostMapping(path = "/getPoints")
     public List<PointObject> getPoints(@Validated @RequestBody GetPointsRequest request, @RequestHeader(value = "Authorization") String header) {
-        System.out.println("Запрос на получение точечек!");
         return pointService.getPoints(request.getR(), header);
     }
 

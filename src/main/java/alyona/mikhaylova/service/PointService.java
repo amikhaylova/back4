@@ -45,7 +45,6 @@ public class PointService {
 
 
     public List<PointObject> getPoints(double r, String header) {
-        //TODO
         String token = jwtUtil.getTokenFromHeader(header);
         String login = jwtUtil.extractUsername(token);
         List<Point> points = pointRepository.findByUserLogin(login);
@@ -60,7 +59,6 @@ public class PointService {
             p.setHit(point.getHit()? "yes" : "no");
             points_for_client.add(p);
         }
-        System.out.println(points_for_client.size());
 
         return points_for_client;
     }
